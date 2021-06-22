@@ -1,5 +1,5 @@
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddressBook {
 	// Initializing an ArrayList to store the contact details
