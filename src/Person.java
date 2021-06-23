@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Person {
 	private final String firstName; // Can't be edited so private and final
@@ -6,10 +7,10 @@ public class Person {
 	private String address;
 	private String city;
 	private String state;
-	private int zip;
+	private String zip;
 
 	public Person(String firstName, String lastName, String phoneNumber, String address, String city, String state,
-			int zip) {
+			String zip) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
@@ -59,11 +60,11 @@ public class Person {
 		this.state = state;
 	}
 
-	public int getPin() {
+	public String getPin() {
 		return zip;
 	}
 
-	public void setPin(int zip) {
+	public void setPin(String zip) {
 		this.zip = zip;
 	}
 
@@ -71,5 +72,14 @@ public class Person {
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
 				+ ", address=" + address + ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
+	}
+
+	public static int findPhoneNo(ArrayList<Person> records, String phoneNumber) {
+		for (int i = 0; i < records.size(); i++) {
+			if (records.get(i).getPhoneNumber().equals(phoneNumber)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }
