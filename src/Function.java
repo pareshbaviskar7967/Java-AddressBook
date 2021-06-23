@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Function {
 	ArrayList<Person> records = new ArrayList<Person>();
+	HashMap<String, ArrayList<Person>> addressBooks = new HashMap<String, ArrayList<Person>>();
 
+	// PersonOprations
 	public void addPerson(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNumber) {
 		Person personObj = new Person(firstName, lastName, phoneNumber, address, city, state, zip);
@@ -63,5 +66,37 @@ public class Function {
 			System.out.println(arr);
 			System.out.println();
 		}
+	}
+
+	// AddressBookOperations
+	public void createBook(String bookName, HashMap<String, ArrayList<Person>> addressBooks) {
+		if (addressBooks.containsKey(bookName)) {
+			System.out.println("Address book with the same name already exist.");
+			System.out.println("Provide different name: ");
+			bookName = scanner.nextLine();
+			addressBookCheck(bookName);
+		} else
+			addressBooks.put(bookName, new ArrayList<Person>());
+	}
+
+	public void displayAddressBooks(HashMap<String, ArrayList<Person>> addressBooks) {
+		boolean is_Empty = addressBooks.isEmpty();
+		if (is_Empty == true) {
+			System.out.println("No record(s) found.");
+		} else {
+			System.out.println(addressBooks);
+			System.out.println();
+		}
+	}
+
+	public int addressBookCheck(HashMap<String, ArrayList<Person>> addressBooks, String addressBookName) {
+		if (addressBooks.containsKey(addressBookName))
+			return 1;
+		else
+			return 0;
+	}
+
+	public void editAddressBook(HashMap<String, ArrayList<Person>> addressBooks, String addressBookName) {
+		ArrayList<Person> records = addressBooks.get(addressBookName);
 	}
 }
