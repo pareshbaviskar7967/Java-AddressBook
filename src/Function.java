@@ -101,6 +101,22 @@ public class Function {
 				.forEach(p -> System.out.println("Name: " + p.getFname() + p.getLname()));
 	}
 
+	public static void countByCity(List<Person> person) {
+		System.out.println("Enter the city name to count the contacts for: ");
+		Scanner scanner = new Scanner(System.in);
+		String city = scanner.next();
+		Long countNamesByCity = person.stream().filter(e -> city.equals(e.getCity())).count();
+		System.out.println(city + " : " + countNamesByCity);
+	}
+
+	public static void countByState(List<Person> person) {
+		System.out.println("Enter the state name to count the contacts for: ");
+		Scanner scanner = new Scanner(System.in);
+		String state = scanner.next();
+		Long countNamesByState = person.stream().filter(e -> state.equals(e.getState())).count();
+		System.out.println(state + " : " + countNamesByState);
+	}
+
 	// AddressBookOperations
 	public void createBook(String bookName, HashMap<String, ArrayList<Person>> addressBooks) {
 		Scanner scanner = new Scanner(System.in);

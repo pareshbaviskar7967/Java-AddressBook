@@ -17,6 +17,8 @@ public class AddressBook extends Function {
 			System.out.println("4 for delete an address book");
 			System.out.println("5 for search in address books by city");
 			System.out.println("6 for search in address books by state");
+			System.out.println("7 for count contacts in address books by city");
+			System.out.println("8 for count contacts in address books by state");
 			System.out.println("0 for exit");
 			System.out.println("Enter your choice: ");
 			option = scanner.nextInt();
@@ -185,10 +187,12 @@ public class AddressBook extends Function {
 			case 4:
 				System.out.println("Deleting the address book..");
 				System.out.println("Displaying all address books");
-				// list goes here
+				displayAllAddressBooks(addressBooks);
 				System.out.println("Select from the address books list,");
 				System.out.println("Name of address books you want to delete: ");
+				scanner.nextLine();
 				String addressBookNameD = scanner.nextLine();
+
 				break;
 
 			case 5:
@@ -219,6 +223,34 @@ public class AddressBook extends Function {
 					break;
 				}
 
+			case 7:
+				System.out.println("Counting by city..");
+				System.out.println("Name of address books you want to count information in: ");
+				scanner.nextLine();
+				String addressBName = scanner.nextLine();
+				if (addressBookCheck(addressBooks, addressBName) != 1) {
+					System.out.println("No record(s) found.");
+					break;
+				} else {
+					List<Person> person = addressBooks.get(addressBName);
+					countByCity(person);
+					break;
+				}
+
+			case 8:
+				System.out.println("Counting by state..");
+				System.out.println("Name of address books you want to count information in: ");
+				scanner.nextLine();
+				String addressBkName = scanner.nextLine();
+				if (addressBookCheck(addressBooks, addressBkName) != 1) {
+					System.out.println("No record(s) found.");
+					break;
+				} else {
+					List<Person> person = addressBooks.get(addressBkName);
+					countByState(person);
+					break;
+				}
+
 			case 0:
 				outerFlag = 1;
 				break;
@@ -227,7 +259,6 @@ public class AddressBook extends Function {
 				System.out.println("Invalid choice.");
 			}
 		}
-
 	}
 
 	public static void main(String[] args) {
