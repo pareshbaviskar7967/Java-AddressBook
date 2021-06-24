@@ -75,30 +75,30 @@ public class Function {
 		System.out.println("Enter the city name to search contacts: ");
 		Scanner scanner = new Scanner(System.in);
 		String city = scanner.nextLine();
-		person.stream().filter(p -> p.getCity().equals(city)).forEach(System.out::println);
+		person.stream().filter(map -> map.getCity().equals(city)).forEach(persons -> System.out.println(persons));
 	}
 
 	public static void searchByState(List<Person> person) {
 		System.out.println("Enter the state name to search contacts: ");
 		Scanner scanner = new Scanner(System.in);
 		String state = scanner.nextLine();
-		person.stream().filter(p -> p.getState().equals(state)).forEach(System.out::println);
+		person.stream().filter(map -> map.getState().equals(state)).forEach(persons -> System.out.println(persons));
 	}
 
 	public static void viewByCity(List<Person> person) {
 		System.out.println("Enter the city name to view contacts: ");
 		Scanner scanner = new Scanner(System.in);
 		String city = scanner.nextLine();
-		person.stream().filter(p -> p.getCity().equals(city))
-				.forEach(p -> System.out.println("Name: " + p.getFname() + p.getLname()));
+		person.stream().filter(map -> map.getCity().contains(city))
+				.forEach(persons -> System.out.println("Name: " + persons.getFname() + persons.getLname()));
 	}
 
 	public static void viewByState(List<Person> person) {
 		System.out.println("Enter the state name to view contacts: ");
 		Scanner scanner = new Scanner(System.in);
 		String state = scanner.nextLine();
-		person.stream().filter(p -> p.getState().equals(state))
-				.forEach(p -> System.out.println("Name: " + p.getFname() + p.getLname()));
+		person.stream().filter(map -> map.getState().contains(state))
+				.forEach(persons -> System.out.println("Name: " + persons.getFname() + persons.getLname()));
 	}
 
 	public static void countByCity(List<Person> person) {
@@ -120,6 +120,18 @@ public class Function {
 	public static void sortedPersonByFirstName(List<Person> person) {
 		List<Person> sortedPerson = person.stream().sorted(new ComparePersons()).collect(Collectors.toList());
 		System.out.println(sortedPerson);
+	}
+
+	public static void sortedPersonByCity(List<Person> person) {
+		person.stream().sorted(new CompareCity()).forEach(System.out::println);
+	}
+
+	public static void sortedPersonByState(List<Person> person) {
+		person.stream().sorted(new CompareState()).forEach(System.out::println);
+	}
+
+	public static void sortedPersonByZip(List<Person> person) {
+		person.stream().sorted(new CompareZip()).forEach(System.out::println);
 	}
 
 	// AddressBookOperations
