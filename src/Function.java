@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Function {
 	ArrayList<Person> records = new ArrayList<Person>();
-	HashMap<String, ArrayList<Person>> addressBooks = new HashMap<String, ArrayList<Person>>();
+	// HashMap<String, ArrayList<Person>> addressBooks = new HashMap<String,
+	// ArrayList<Person>>();
 
 	// PersonOprations
 	public void addPerson(String firstName, String lastName, String address, String city, String state, String zip,
@@ -68,15 +71,28 @@ public class Function {
 		}
 	}
 
+	public static void searchByCity(List<Person> person) {
+		System.out.println("Enter the city name to search contacts: ");
+		Scanner scanner = new Scanner(System.in);
+		String city = scanner.nextLine();
+		person.stream().filter(p -> p.getCity().equals(city)).forEach(System.out::println);
+	}
+
 	// AddressBookOperations
 	public void createBook(String bookName, HashMap<String, ArrayList<Person>> addressBooks) {
+		Scanner scanner = new Scanner(System.in);
 		if (addressBooks.containsKey(bookName)) {
 			System.out.println("Address book with the same name already exist.");
 			System.out.println("Provide different name: ");
 			bookName = scanner.nextLine();
-			addressBookCheck(bookName);
+			addressBookCheck(addressBooks, bookName);
 		} else
 			addressBooks.put(bookName, new ArrayList<Person>());
+	}
+
+	public void displayAllAddressBooks(HashMap<String, ArrayList<Person>> addressBooks) {
+		System.out.println(addressBooks);
+		System.out.println();
 	}
 
 	public void displayAddressBooks(HashMap<String, ArrayList<Person>> addressBooks) {
