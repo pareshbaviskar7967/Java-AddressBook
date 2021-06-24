@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Person {
-	private final String firstName; // Can't be edited so private and final
-	private final String lastName; // Can't be edited so private and final
-	private String phoneNumber;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
+	public final String firstName; // Can't be edited so private and final
+	public final String lastName; // Can't be edited so private and final
+	public String phoneNumber;
+	public String address;
+	public String city;
+	public String state;
+	public String zip;
 
 	public Person(String firstName, String lastName, String phoneNumber, String address, String city, String state,
 			String zip) {
@@ -70,8 +70,9 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
+		return '\n' + "First name: " + firstName + '\n' + "Last name: " + lastName + '\n' + "Phone number: "
+				+ phoneNumber + '\n' + "Address: " + address + '\n' + "City: " + city + '\n' + "State: " + state + '\n'
+				+ "zip: " + zip;
 	}
 
 	public static int findPhoneNo(ArrayList<Person> records, String phoneNumber) {

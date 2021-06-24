@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Function {
 	ArrayList<Person> records = new ArrayList<Person>();
-	// HashMap<String, ArrayList<Person>> addressBooks = new HashMap<String,
-	// ArrayList<Person>>();
+	// HashMap<String, ArrayList<com.work.Person>> addressBooks = new
+	// HashMap<String, ArrayList<com.work.Person>>();
 
 	// PersonOprations
 	public void addPerson(String firstName, String lastName, String address, String city, String state, String zip,
@@ -115,6 +115,11 @@ public class Function {
 		String state = scanner.next();
 		Long countNamesByState = person.stream().filter(e -> state.equals(e.getState())).count();
 		System.out.println(state + " : " + countNamesByState);
+	}
+
+	public static void sortedPersonByFirstName(List<Person> person) {
+		List<Person> sortedPerson = person.stream().sorted(new ComparePersons()).collect(Collectors.toList());
+		System.out.println(sortedPerson);
 	}
 
 	// AddressBookOperations
